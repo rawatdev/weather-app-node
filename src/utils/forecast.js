@@ -1,5 +1,8 @@
 const request = require("postman-request")
-const dotenv = require("dotenv").config()
+
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv").config()
+}
 
 const capitalizeWord = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
