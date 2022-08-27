@@ -1,5 +1,8 @@
 const request = require("postman-request")
-const dotenv = require("dotenv").config()
+
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv").config()
+}
 
 const geocode = (address, callback) => {
   const url = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(
