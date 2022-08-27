@@ -17,12 +17,18 @@ const forecast = (lat, lon, callback) => {
     } else if (body.message) {
       callback("Unable to find location", undefined)
     } else {
-      const { temp, feels_like: feelsLike } = body.main
+      const {
+        temp,
+        temp_min,
+        temp_max,
+        humidity,
+        feels_like: feelsLike,
+      } = body.main
       const description = capitalizeWord(body.weather[0].description)
 
       callback(
         undefined,
-        `${description}. It is currently ${temp} degrees out. It feels like ${feelsLike} degrees out.`
+        `${description}. It is currently ${temp} degrees out. It feels like ${feelsLike} degrees out. The today high is ${temp_max} with a low of ${temp_min}. The humidity is ${humidity}%.`
       )
     }
   })
